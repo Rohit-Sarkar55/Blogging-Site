@@ -15,10 +15,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+const posts = [];
 
 app.get("/" , function(req ,res){
-
-  res.render("home" , { content:homeStartingContent } );
+  res.render("home" , { content:homeStartingContent , Blogs : posts } );
 });
 
 app.get("/about", function(req ,res){
@@ -38,8 +38,12 @@ app.get("/compose" , function(req , res ){
 });
 
 app.post("/compose" , function(req , res){
-  var content = req.body.text;
-  console.log(content);
+  
+  var post ={
+    title : req.body.posttitle,
+    body: req.body.postbody
+  }
+  posts.push(post);
   res.redirect("/");
 });
 

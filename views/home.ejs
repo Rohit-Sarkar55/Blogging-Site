@@ -4,4 +4,9 @@
 
 <p><%= content %></p>
 
+<% for(var i=0; i < Blogs.length; i++) { %>
+    <h3> <%= Blogs[i].title %> </h3>
+    <p> <%= Blogs[i].body %> </p>
+<% } %>
+
 <%- include("partials/footer") %>
