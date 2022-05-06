@@ -4,9 +4,9 @@
 
 <p><%= content %></p>
 
-<% for(var i=0; i < Blogs.length; i++) { %>
-    <h3> <%= Blogs[i].title %> </h3>
-    <p> <%= Blogs[i].body %> </p>
-<% } %>
+<% Blogs.forEach(function(post) { %>
+    <h3> <%= post.title %> </h3>
+    <p> <%= post.body %> </p>
+<% }) %>
 
 <%- include("partials/footer") %>
