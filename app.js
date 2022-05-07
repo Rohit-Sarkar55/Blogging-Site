@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 const posts = [];
+const posttitle = ""  , postContent = "";
 
 app.get("/" , function(req ,res){
   res.render("home" , { content:homeStartingContent , Blogs : posts } );
@@ -28,7 +29,7 @@ app.get("/about", function(req ,res){
 });
 
 app.get("/contact", function(req ,res){
-  res.render("contact" , {content : contactContent});
+  res.render("contact" , { content : contactContent});
   
 });
 
@@ -48,13 +49,31 @@ app.post("/compose" , function(req , res){
   res.redirect("/");
 });
 
-app.get("/posts/:topic" , function(req , res ){
-  const userUrl = req.params.topic;
+// app.get("/posts/:topic" , function(req , res ){
+//   const userUrl = req.params.topic;
+//   posts.forEach(function(it){
+//     const store = it.title;
+//     if(store === userUrl ){
+//       console.log("Matched ");
+//     }
+//   })
+  
+// });
+
+// app.get("/post" , function(req ,res){
+//   res.render("post", { x:posttitle, y:postContent } );
+// });
+app.get("/posts/:postName" , function(req , res ){
+  const userUrl = _.lowerCase(req.params.postName);
+
   posts.forEach(function(it){
-    const store = it.title;
+    const store = _.lowerCase(it.title);
     if(store === userUrl ){
-      console.log("Matched ");
+      // posttitle = it.title;
+      // postContent = it.content;
+      res.render("post" , { x: it.title , y:it.body});
     }
+    
   })
   
 });
