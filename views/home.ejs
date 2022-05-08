@@ -5,8 +5,8 @@
 <p><%= content %></p>
 
 <% Blogs.forEach(function(post) { %>
-    <h3> <%= post.title %> </h3>
-    <p class = "show-read-more"> <%= post.body %> </p>
+    <h3 > <%= post.title %> </h3>
+    <p > <%= post.body.substring(0, 200) +"..." %> <a href="/posts/<%=post.title%>"> Read More</a> </p>
 <% }) %>
 
 <%- include("partials/footer") %>

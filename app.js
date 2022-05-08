@@ -63,6 +63,7 @@ app.post("/compose" , function(req , res){
 app.get("/post" , function(req ,res){
   res.render("post", { x:posttitle, y:postContent } );
 });
+
 app.get("/posts/:postName" , function(req , res ){
   const userUrl = _.lowerCase(req.params.postName);
 
@@ -77,6 +78,18 @@ app.get("/posts/:postName" , function(req , res ){
   })
   
 });
+// app.get("/ReadMore" , function(req ,res){
+//   const tit = _.lowerCase(req.body.title);
+//   posts.forEach(function(it){
+//     const store = _.lowerCase(it.title);
+//     if(store === title ){
+//       // posttitle = it.title;
+//       // postContent = it.content;
+//       res.render("post" , { x: it.title , y:it.body});
+//     }
+    
+//   })
+// });
 // $(document).ready(function(){
 // 	var maxLength = 30;
 // 	$(".show-read-more").each(function(){
